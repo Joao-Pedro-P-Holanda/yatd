@@ -1,0 +1,23 @@
+
+services:
+  db:
+    image: postgres:16.3
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER?User not set}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD?Password not set}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - database:/home/yatd-db
+    ports:
+      - "5432:5432"
+
+    # TODO include api service, optionally with sidekiq
+
+
+volumes:
+    database

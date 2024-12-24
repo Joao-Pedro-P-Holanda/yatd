@@ -1,0 +1,27 @@
+<%= form_with(model: task_check) do |form| %>
+  <% if task_check.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(task_check.errors.count, "error") %> prohibited this task_check from being saved:</h2>
+
+      <ul>
+        <% task_check.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :complete, style: "display: block" %>
+    <%= form.checkbox :complete %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<%= form_with(model: purchase_link) do |form| %>
+  <% if purchase_link.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(purchase_link.errors.count, "error") %> prohibited this purchase_link from being saved:</h2>
+
+      <ul>
+        <% purchase_link.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :complete, style: "display: block" %>
+    <%= form.checkbox :complete %>
+  </div>
+
+  <div>
+    <%= form.label :url, style: "display: block" %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

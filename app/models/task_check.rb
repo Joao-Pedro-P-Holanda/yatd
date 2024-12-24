@@ -1,0 +1,2 @@
+class TaskCheck < ApplicationRecord
+end

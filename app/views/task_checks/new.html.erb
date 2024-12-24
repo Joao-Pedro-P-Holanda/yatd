@@ -1,0 +1,11 @@
+<% content_for :title, "New task check" %>
+
+<h1>New task check</h1>
+
+<%= render "form", task_check: @task_check %>
+
+<br>
+
+<div>
+  <%= link_to "Back to task checks", task_checks_path %>
+</div>
