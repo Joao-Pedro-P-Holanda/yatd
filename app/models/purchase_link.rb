@@ -1,0 +1,2 @@
+class PurchaseLink < ApplicationRecord
+end

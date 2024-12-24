@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Task checks" %>
+
+<h1>Task checks</h1>
+
+<div id="task_checks">
+  <% @task_checks.each do |task_check| %>
+    <%= render task_check %>
+    <p>
+      <%= link_to "Show this task check", task_check %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New task check", new_task_check_path %>
