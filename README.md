@@ -1,3 +1,5 @@
+![App logo](./docs/logo.png)
+
 # Yet Another ToDO
 
 Este projeto consiste de uma Todo list implementada com o framework Ruby on Rails, mas com certos
