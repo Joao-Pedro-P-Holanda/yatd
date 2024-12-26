@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-@import 'components/navbar.scss', 'components/footer.scss';
+@import './components/navbar.scss', 'components/footer.scss';
 
 // simplified material color theme 
 $color-mode-type: media-query;
@@ -104,13 +104,10 @@ $color-mode-type: media-query;
 main{
   background-color: var(--color-background);
   color: var(--color-on-background);
+.btn-primary {
+    background-color: var(--color-primary-container) !important;
+    color: var(--color-on-primary-container) !important;
+    border-color: var(--color-outline-variant) !important;
+  }
 }
-
-
-
-
-
-
-
-
 
