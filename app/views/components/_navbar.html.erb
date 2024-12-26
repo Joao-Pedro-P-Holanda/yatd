@@ -8,20 +8,37 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <% @active_home = controller.controller_path == 'home' && controller.action_name == 'index' ? "active" : ""%>
+          <a class="nav-link <%=@active_home%>" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/task_lists">Tarefas</a>
+          <% @active_tasks = controller.controller_path == 'task_lists' ? "active" : ""%>
+          <a class="nav-link <%=@active_tasks%> " href="/task_lists">Tarefas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/purchases">Compras</a>
+          <% @active_purchases = controller.controller_path == 'purchases' ? "active" : ""%>
+          <a class="nav-link <%=@active_purchases%>" href="/purchases">Compras</a>
         </li>
+        
+        
       </ul>
-      <!--<form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      -->
+      <div class="nav-item dropdown user-options">
+          <% if user_signed_in? %>
+          <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
+            <%= current_user.name %>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to "Editar perfil", edit_user_registration_path, class: "btn" %>
+            </li>
+            <li>
+              <%= link_to 'Sair', destroy_user_session_path, data: {turbo_method: :delete}, class: 'btn' %>
+            </li>
+          </ul>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+          <% end %>
+      </div>
     </div>
   </div>
 </nav>
