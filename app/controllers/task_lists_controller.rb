@@ -1,4 +1,5 @@
 class TaskListsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task_list, only: %i[ show edit update destroy ]
 
   # GET /task_lists or /task_lists.json

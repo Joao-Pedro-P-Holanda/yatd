@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :purchase_links
   resources :purchases
   resources :task_tags

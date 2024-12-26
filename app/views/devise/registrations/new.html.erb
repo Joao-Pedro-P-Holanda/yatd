@@ -1,0 +1,29 @@
+<%= image_tag "logo.png"%>
+<h2>Cadastrar-se</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "d-flex flex-column gap-3 align-items-center"}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.text_field :name, autofocus: true, placeholder:"Nome", class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.email_field :email, autocomplete: "email", placeholder: "Email" , class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <% placeholder_text = "Senha" %>
+    <% placeholder_text += " (mínimo #{@minimum_password_length} caracteres)" if @minimum_password_length %>
+    <%= f.password_field :password, autocomplete: "new-password",placeholder: placeholder_text , class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "Confirmar senha", class: "form-control"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Criar conta",class:'btn btn-lg btn-primary btn-block' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
