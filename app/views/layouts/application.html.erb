@@ -24,8 +24,10 @@
   </head>
 
   <body>
+    <!--notice and alert are used by devise-->
+    <%= render "components/notice_alert"%>
     <%= render "components/navbar"%>
-    <main class='bd-content p-5 min-vh-100' role="main">
+    <main class='d-flex flex-column bd-content p-5 min-vh-100 gap-3 align-items-center' role="main">
     <%= yield %>
     </main>
     <%= render "components/footer" %>
