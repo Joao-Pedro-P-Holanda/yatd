@@ -1,4 +1,5 @@
 class TaskTagsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task_tag, only: %i[ show edit update destroy ]
 
   # GET /task_tags or /task_tags.json

@@ -1,4 +1,5 @@
 class TaskChecksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task_check, only: %i[ show edit update destroy ]
 
   # GET /task_checks or /task_checks.json

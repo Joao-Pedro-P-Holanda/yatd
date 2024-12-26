@@ -1,4 +1,5 @@
 class PurchaseLinksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_purchase_link, only: %i[ show edit update destroy ]
 
   # GET /purchase_links or /purchase_links.json
