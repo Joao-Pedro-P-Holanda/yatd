@@ -11,3 +11,14 @@
   color: var(--color-on-surface-variant) !important;
 }
 
+
+.navbar .user-options {
+  margin-right: 120px;
+  .dropdown-menu{
+    background-color: var(--color-surface-container-high) !important;
+  }
+  .dropdown-menu a {
+     color: var(--color-on-surface) !important;
+  }
+}
+
