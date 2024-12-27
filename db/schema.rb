@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_25_174006) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_26_221016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,6 +34,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_174006) do
     t.index ["users_id"], name: "index_purchases_on_users_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "task_checks", force: :cascade do |t|
     t.string "description"
     t.boolean "complete"
@@ -50,6 +57,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_174006) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["users_id"], name: "index_task_lists_on_users_id"
+  end
+
+  create_table "task_lists_statuses", force: :cascade do |t|
+    t.bigint "task_list_id", null: false
+    t.bigint "status_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status_id"], name: "index_task_lists_statuses_on_status_id"
+    t.index ["task_list_id"], name: "index_task_lists_statuses_on_task_list_id"
   end
 
   create_table "task_tags", force: :cascade do |t|
@@ -89,6 +105,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_174006) do
   add_foreign_key "purchases", "users", column: "users_id"
   add_foreign_key "task_checks", "tasks", column: "tasks_id"
   add_foreign_key "task_lists", "users", column: "users_id"
+  add_foreign_key "task_lists_statuses", "statuses"
+  add_foreign_key "task_lists_statuses", "task_lists"
   add_foreign_key "task_tags", "tasks", column: "tasks_id"
   add_foreign_key "tasks", "task_lists", column: "task_lists_id"
 end
