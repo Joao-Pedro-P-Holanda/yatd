@@ -11,6 +11,8 @@
 ARG RUBY_VERSION=3.3.6
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
+
+
 # Rails app lives here
 WORKDIR /rails
 
@@ -23,7 +25,8 @@ RUN apt-get update -qq && \
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    PORT=443
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
@@ -70,5 +73,6 @@ USER 1000:1000
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
-EXPOSE ${PORT?portnotset}
+EXPOSE ${PORT}
+
 CMD ["./bin/thrust", "./bin/rails", "server"]
