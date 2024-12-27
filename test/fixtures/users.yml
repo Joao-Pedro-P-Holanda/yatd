@@ -3,9 +3,9 @@
 one:
   name: MyString
   email: MyString
-  hashed_password: MyString
+  encripted_password: MyString
 
 two:
   name: MyString
   email: MyString
-  hashed_password: MyString
+  encripted_password: MyString
