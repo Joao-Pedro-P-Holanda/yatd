@@ -1,7 +1,8 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@use 'bootstrap/scss/bootstrap';
+@use 'bootstrap-icons/font/bootstrap-icons';
 
-@import './components/navbar.scss', 'components/footer.scss';
+@use './components/navbar.scss';
+@use 'components/footer.scss';
 
 // simplified material color theme 
 $color-mode-type: media-query;
@@ -92,22 +93,48 @@ $color-mode-type: media-query;
   :root {
     @include dark-theme;
   }
-  
+
 }
 
-@media(prefers-color-scheme: light){
-:root {
+@media(prefers-color-scheme: light) {
+  :root {
     @include light-theme;
   }
 }
 
-main{
-  background-color: var(--color-background);
-  color: var(--color-on-background);
-.btn-primary {
-    background-color: var(--color-primary-container) !important;
-    color: var(--color-on-primary-container) !important;
-    border-color: var(--color-outline-variant) !important;
-  }
+// overriding bootstrap style
+.btn {
+  border-color: var(--color-outline-variant) !important;
 }
 
+.btn-primary {
+  background-color: var(--color-primary-container) !important;
+  color: var(--color-on-primary-container) !important;
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-container) !important;
+  color: var(--color-on-secondary-container) !important;
+}
+
+.btn-info {
+  background-color: var(--color-tertiary-container) !important;
+  color: var(--color-on-tertiary-container) !important;
+}
+
+main {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+
+
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  i {
+    color: var(--color-on-primary);
+  }
+}
