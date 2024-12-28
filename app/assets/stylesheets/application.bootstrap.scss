@@ -1,15 +1,16 @@
-@use 'bootstrap/scss/bootstrap';
-@use 'bootstrap-icons/font/bootstrap-icons';
+$primary: #6bcdbb;
+$secondary: #3f6659;
+$tertiary: #5f53a2;
 
-@use './components/navbar.scss';
-@use 'components/footer.scss';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
 
-// simplified material color theme 
-$color-mode-type: media-query;
+@import './components/navbar.scss';
+@import'components/footer.scss';
+
 
 
 @mixin light-theme {
-  --color-primary: rgb(0 107 85);
   --color-surface-tint: rgb(0 107 85);
   --color-on-primary: rgb(255 255 255);
   --color-primary-container: rgb(91 205 171);
@@ -103,6 +104,21 @@ $color-mode-type: media-query;
 }
 
 // overriding bootstrap style
+.card {
+  background-color: var(--color-surface-container-low) !important;
+  color: var(--color-on-surface) !important;
+  padding: 0.5rem 0.5rem !important;
+
+  // card elevation
+  box-shadow: 0 4px 6px var(--color-inverse-on-surface) !important;
+}
+
+.list-group-item {
+  background-color: var(--color-surface-container-lowest) !important;
+  color: var(--color-on-surface-variant) !important;
+  border-color: var(--color-outline-variant) !important;
+}
+
 .btn {
   border-color: var(--color-outline-variant) !important;
 }
@@ -126,8 +142,24 @@ main {
   background-color: var(--color-background);
   color: var(--color-on-background);
 
+  #tech-stack {
+    .card {
+      max-width: 300px;
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
 
 }
+
+// only divs on the first nesting level
+main>div {
+  width: 100%;
+}
+
 
 .back-to-top {
   position: fixed;
