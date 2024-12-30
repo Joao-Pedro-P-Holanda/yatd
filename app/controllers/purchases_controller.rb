@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
 
   # GET /purchases or /purchases.json
   def index
-    @purchases = Purchase.all
+    @purchases = current_user.purchases.all
   end
 
   # GET /purchases/1 or /purchases/1.json
@@ -22,7 +22,7 @@ class PurchasesController < ApplicationController
 
   # POST /purchases or /purchases.json
   def create
-    @purchase = Purchase.new(purchase_params)
+    @purchase = current_user.purchases.build(purchase_params)
 
     respond_to do |format|
       if @purchase.save

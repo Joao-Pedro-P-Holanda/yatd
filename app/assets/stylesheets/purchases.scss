@@ -1,0 +1,41 @@
+.purchases {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.purchase-list {
+  background-color: var(--color-surface-container-lowest);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.purchase-link {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+
+  figure {
+    max-width: 100%;
+    background: var(--color-surface-container);
+    display: flex;
+    flex-direction: column;
+
+    .figure-caption {
+      .lead {
+        color: var(--color-on-surface-variant) !important;
+      }
+
+      color: var(--color-on-surface-variant) !important;
+    }
+  }
+}
+
+
+.purchase-preview {
+  max-width: 300px;
+}

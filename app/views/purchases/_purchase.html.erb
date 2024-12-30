@@ -1,17 +1,34 @@
-<div id="<%= dom_id purchase %>">
-  <p>
-    <strong>Name:</strong>
-    <%= purchase.name %>
-  </p>
+<div class='container-lg gap-1 min-vh-100' id="<%= dom_id purchase %>">
+  <div>
+    <h4 class='display-3'><%= purchase.name %></h4>
+  </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= purchase.description %>
-  </p>
+  <hr/>
 
-  <p>
-    <strong>Due date:</strong>
-    <%= purchase.due_date %>
-  </p>
+  <div>
+    <h5>Descrição</h5>
+    <p class='lead'>
+      <% if purchase.description.present?%>
+        <%= purchase.description %>
+      <% else %>
+        Nenhuma descrição informada
+      <% end %>
+    </p>
+  </div>
 
+  <span class='badge rounded-pill text-bg-primary'>
+    <%= format_date(purchase.due_date) %>
+  </span>
+
+  <div id='purchase_list' class='purchase-list'>
+    <% if purchase.purchase_links.present? %>
+      <h6 class='display-5'>Itens</h6>
+      <% for purchase_link in purchase.purchase_links %>
+        <%= render purchase_link, og_info: get_url_info(purchase_link.url), purchase: purchase %>
+      <% end %>
+    <% else %>
+      <p id='no-item-found' class='lead'>Nenhum item adicionado</p>
+    <% end %>
+
+  </div>
 </div>

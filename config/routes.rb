@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :purchases do
-    resources :purchase_links
+    resources :purchase_links do
+      member do
+        patch :toggle_complete
+      end
+    end
   end
   resources :task_lists do
     resources :statuses

@@ -1,11 +1,13 @@
-<% content_for :title, "New purchase" %>
+<% content_for :title, "Nova lista de compras" %>
 
-<h1>New purchase</h1>
-
-<%= render "form", purchase: @purchase %>
+<div>
+  <%= link_to "Voltar para minhas listas", purchases_path, class: 'btn btn-secondary' %>
+</div>
 
 <br>
 
-<div>
-  <%= link_to "Back to purchases", purchases_path %>
-</div>
+<h1>Nova compra</h1>
+
+<%= render "form", purchase: @purchase, action_name: 'Criar' %>
+
+

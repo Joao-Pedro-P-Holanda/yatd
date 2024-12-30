@@ -1,12 +1,41 @@
-<div id="<%= dom_id purchase_link %>">
-  <p>
-    <strong>Complete:</strong>
-    <%= purchase_link.complete %>
+<div class='purchase-link' id="<%= dom_id purchase_link %>">
+  
+  
+  <figure class='p-4'>
+  <%= image_tag og_info.fetch(:img,""), class: 'figure-img img-fluid img-thumbnail' if purchase_link.url.present? %>
+  <figcaption class='figure-caption text-truncate'>
+    <%= form_with(url: toggle_complete_purchase_purchase_link_path(purchase_link.purchase.id,purchase_link.id), method: :patch, html: {class: 'form-check', id: "toggle-complete-form-#{purchase_link.id}", data: {turbo_frame: "self"}}) do |form| %>
+      <%= form.label "Finalizada", class: 'form-check-label' %>
+      <%= form.check_box :complete,
+          checked: purchase_link.complete,
+          onchange: "document.getElementById('toggle-complete-form-#{purchase_link.id}').submit();",
+          class: 'form-check-input' %>
+    <% end %>
+    <h4 class='text-truncate lead'>
+    <strong>
+      <%=og_info.fetch(:title, "Nenhum título encontrado")%>
+    </strong>
+    </h4>
+    <div>
+      <h5>Preço</h5>
+      <p> 
+        R$<%= purchase_link.value %>
+      </p>
+    </div>
+    <br/>
+    <p class='text-truncate'>
+    <%= og_info.fetch(:description, "Nenhuma descrição encontrada")%>
+    </p>
   </p>
+  </figure>
+  </a>
 
-  <p>
-    <strong>Url:</strong>
-    <%= purchase_link.url %>
-  </p>
-
+  <div class='row'>
+    <div class='col d-flex justify-content-center'> 
+      <%= link_to "Editar item", edit_purchase_purchase_link_path(purchase,purchase_link), class:'btn btn-secondary', data: {turbo_frame:'modal' } %> 
+    </div>
+    <div class='col d-flex justify-content-center'>
+      <%= button_to "Excluir", purchase_purchase_link_path(purchase,purchase_link), method: :delete,class: 'btn btn-danger', data: {'turbo-confirm':"Deseja remover esse item da lista"}%>
+    </div>
+  </div>
 </div>
