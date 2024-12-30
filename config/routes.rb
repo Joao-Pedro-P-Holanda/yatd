@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :purchase_links
-  resources :purchases
-  resources :task_tags
-  resources :task_checks
-  resources :tasks
-  resources :task_lists
+  resources :purchases do
+    resources :purchase_links
+  end
+  resources :task_lists do
+    resources :statuses
+    resources :tasks do
+      resources :task_tags
+      resources :task_checks
+    end
+  end
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

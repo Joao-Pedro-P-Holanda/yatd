@@ -14,6 +14,13 @@ essas compras.
 - Criar compras agendadas.
 - Controlar quais itens serão comprados e visualizar o balanço após as compras.
 
+## Ferramentas
+
+- Ruby 3.3.6
+- Rails 8.0.1 (última versão)
+- PostgreSQL 16.6 (última versão disponibilizada na plataforma Render)
+- Redis 6.2.14 (última versão disponibilizada na plataforma Render)
+
 ## Banco de Dados
 
 O banco de dados escolhido para essa aplicação foi o PostgreSQL pela minha familiaridade anterior,
@@ -25,14 +32,16 @@ Abaixo está um diagrama das principais entidades da aplicação e seus relacion
 
 ```mermaid
 erDiagram 
-    user ||--o{ task_list: "Pode ou não ter listas"
-    user ||--o{ purchase: "Pode ou não ter compras" 
-    task_list ||--|{ task : "Possui uma ou mais"
-    task ||--o{ task_check : "Pode ter várias"
-    task ||--o{ task_tag : "Pode ter várias"
-    purchase ||--|{ purchase_link : "Possui um ou mais" 
+    users ||--o{ task_lists: "Pode ou não ter listas"
+    users ||--o{ purchases: "Pode ou não ter compras" 
+    task_lists ||--|{ tasks : "Possui uma ou mais"
+    task_lists ||--o{ task_lists_statuses : "Diferentes status para uma lista"
+    task_lists_statuses ||--o{ statuses : "Diferentes listas para um status"
+    tasks ||--o{ task_checks : "Pode ter várias"
+    tasks ||--o{ task_tags : "Pode ter várias"
+    purchases ||--|{ purchase_links : "Possui um ou mais" 
 
-    user {
+    users {
         int id
         string name
         string email
@@ -40,30 +49,50 @@ erDiagram
         datetime created_at
     }
 
-    task_list {
+    task_lists {
         int id
         string name
         string description
         datetime updated_at
         datetime created_at
     }
-    task {
+    
+    
+    task_lists_statuses {
+        int id
+        int task_list_id
+        int status_id
+        datetime created_at
+        datetime updated_at
+    }
+    
+    statuses {
+        int id
+        string name
+        string color
+        datetime created_at
+        datetime updated_at
+    }
+
+    tasks {
         int id 
         string name
         string description
+        string status
         int priority
         datetime due_date
         datetime updated_at
         datetime created_at
     }
-    task_tag {
+    task_tags {
         int id
         string name
+        string color
         datetime updated_at
         datetime created_at
     }
 
-    task_check {
+    task_checks {
         int id
         string description
         boolean complete
@@ -71,14 +100,14 @@ erDiagram
         datetime created_at
     }
 
-    purchase {
+    purchases {
         int id 
         string name
         string description
         datetime due_date
     }
 
-    purchase_link {
+    purchase_links {
         int id 
         boolean complete
         float value

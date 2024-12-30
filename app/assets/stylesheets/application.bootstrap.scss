@@ -1,14 +1,18 @@
+$primary: #6bcdbb;
+$secondary: #3f6659;
+$tertiary: #5f53a2;
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-@import './components/navbar.scss', 'components/footer.scss';
+@import './components/navbar.scss';
+@import './components/footer.scss';
+@import './show_task_list.scss';
+@import './purchases.scss';
 
-// simplified material color theme 
-$color-mode-type: media-query;
 
 
 @mixin light-theme {
-  --color-primary: rgb(0 107 85);
   --color-surface-tint: rgb(0 107 85);
   --color-on-primary: rgb(255 255 255);
   --color-primary-container: rgb(91 205 171);
@@ -92,22 +96,89 @@ $color-mode-type: media-query;
   :root {
     @include dark-theme;
   }
-  
+
 }
 
-@media(prefers-color-scheme: light){
-:root {
+@media(prefers-color-scheme: light) {
+  :root {
     @include light-theme;
   }
 }
 
-main{
-  background-color: var(--color-background);
-  color: var(--color-on-background);
-.btn-primary {
-    background-color: var(--color-primary-container) !important;
-    color: var(--color-on-primary-container) !important;
-    border-color: var(--color-outline-variant) !important;
-  }
+
+.modal-content {
+  color: var(--color-on-surface);
+  background-color: var(--color-surface-container-high);
 }
 
+.modal-dialog {
+  max-width: 75% !important;
+}
+
+// overriding bootstrap style
+.card {
+  background-color: var(--color-surface-container-low) !important;
+  color: var(--color-on-surface) !important;
+  padding: 0.5rem 0.5rem !important;
+
+  // card elevation
+  box-shadow: 0 4px 6px var(--color-inverse-on-surface) !important;
+}
+
+.list-group-item {
+  background-color: var(--color-surface-container-lowest) !important;
+  color: var(--color-on-surface-variant) !important;
+  border-color: var(--color-outline-variant) !important;
+}
+
+.btn {
+  border-color: var(--color-outline-variant) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-primary-container) !important;
+  color: var(--color-on-primary-container) !important;
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-container) !important;
+  color: var(--color-on-secondary-container) !important;
+}
+
+.btn-info {
+  background-color: var(--color-tertiary-container) !important;
+  color: var(--color-on-tertiary-container) !important;
+}
+
+main {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+
+  #tech-stack {
+    .card {
+      max-width: 300px;
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+}
+
+// only divs on the first nesting level
+main>div {
+  width: 100%;
+}
+
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  i {
+    color: var(--color-on-primary);
+  }
+}

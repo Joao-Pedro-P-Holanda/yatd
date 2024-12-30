@@ -1,37 +1,43 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: [@task_list,@task], local: true, html: {class:'form-group d-flex flex-column gap-3'}) do |form| %>
   <% if task.errors.any? %>
-    <div style="color: red">
+    <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-        <% task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label "Nome" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <%= form.label "Descrição" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :priority, style: "display: block" %>
-    <%= form.number_field :priority %>
+  <div class="form-group row">
+    <div class='col align-content-center'>
+    <%= form.label "Prioridade" %>
+    <%= form.select :priority, @priorities, class: "form-select", :prompt => "Prioridade" %>
+    </div>
+    <div class='col align-content-center'>
+      <%= form.label :status %>
+      <%= form.select :status, @task_list.statuses.map {|status| status.name} , class: "form-select", :prompt => "Status" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :due_date, style: "display: block" %>
-    <%= form.datetime_field :due_date %>
+  <div class="form-group">
+    <%= form.label "Data limite" %>
+    <%= form.datetime_field :due_date, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit action_name, class: "btn btn-primary" %>
   </div>
 <% end %>

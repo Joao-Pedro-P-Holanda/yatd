@@ -1,10 +1,11 @@
+<div class='d-flex flex-column align-items-start container-lg min-vh-100 gap-5'>
 <p style="color: green"><%= notice %></p>
 
+<%= link_to "Voltar para todas as listas", task_lists_path, class: 'btn btn-secondary' %>
 <%= render @task_list %>
 
 <div>
-  <%= link_to "Edit this task list", edit_task_list_path(@task_list) %> |
-  <%= link_to "Back to task lists", task_lists_path %>
-
-  <%= button_to "Destroy this task list", @task_list, method: :delete %>
+  <%= link_to "Editar informações da lista", edit_task_list_path(@task_list), class: 'btn btn-primary' %> 
+  <%= button_to "Excluir", @task_list, method: :delete, class: 'btn btn-danger',  data: { 'turbo-confirm': 'Deseja mesmo remover a lista' }  %>
+</div>
 </div>

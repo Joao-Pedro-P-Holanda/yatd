@@ -1,1 +1,72 @@
-<h1>Home Page</h1>
+<h1><%=image_tag "logo.png" ,class:'img-fluid'%>
+
+</h1>
+<div id='description'>
+<h2>Descrição</h2>
+<hr/>
+<p class='lead'>
+  Yet Another TODO é a implementação de um desafio individual desenvolvido com Ruby on Rails,
+  e o principal diferencial desse TODO é que você também pode adicionar listas de compras e
+  acompanhar os gastos que teve com compras online.
+</p>
+</div>
+
+<div id='tech-stack', class='d-flex flex-column gap-3'>
+  <h2>Ferramentas</h2>
+  <hr/>
+  As principais tecnologias que utilizei ao longo do desenvolvimento, além de Ruby e o framework Rails foram:
+  <div class='d-flex flex-wrap justify-content-around gap-4'>
+    <div class='card flex-fill align-items-center'>
+        <img class='card-image-top image-fluid' src="https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg"/>
+        <div class='card-body'>        
+          <h4 class='card-title'>PostgreSQL</h4>
+          <p class='card-text'>Banco de dados relacional utilizado localmente e em produção</p>
+        </div>
+    </div> 
+
+    <div class='card flex-fill align-items-center'>
+      <%= image_tag "docker-mark-blue.svg", class:'card-image-top image-fluid' %>
+      <div class='card-body'>
+        <h4 class='card-title'>Docker</h4>
+        <p>Containerização da aplicação e banco de dados localmente, em produção optei pela opção de deploy padrão do Ruby on Rails</p>
+      </div>
+    </div>
+    <div class='card flex-fill align-items-center'>
+      <img class='card-image-top image-fluid' src="https://getbootstrap.com.br/assets/brand/bootstrap-solid.svg"/>
+      <div class='card-body'>
+        <h4 class='card-title'>Bootstrap</h4> 
+        <p class='card-text'>Estilização prática com apenas css puro e classes html preexistentes</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div id='project-decisions'> 
+  <h2>Decisões de projeto</h2>
+  <hr/>
+  <ul>
+    <li>
+      <p class='w-75'>
+      <strong> Formulários modais com Turbo Frames:</strong> para uma melhor experiência de usuário utilizei
+      <code>turbo_frame_tag</code> para renderizar os formulários de criação e edição como modais.
+      </p>
+    </li>
+    <li>
+      <p class='w-75'>
+      <strong>Recursos aninhados:</strong> complementarmente aos formulários modais, para garantir
+      que a dependência entre entidades fosse cumprida, utilizei recursos aninhados para garantir que 
+      todo objeto seja vinculado ao seu recurso "dono" adequadamente.
+      </p>
+    </li>
+    <li>
+      <p class='w-75'>
+      <strong>Tema customizado com Bootstrap:</strong> me baseei no tema já existente do Bootstrap,
+      e complementei com um tema seguindo as guidelines do Material 3, por isso adicionei novas
+      variáveis de cores e substitui as cores primárias, secundárias e informativas do Bootstrap.
+      </p>
+    </li>
+    
+  </ul>
+</div>
+

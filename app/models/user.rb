@@ -4,4 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :task_lists, foreign_key: :users_id, dependent: :destroy
+  has_many :purchases, foreign_key: :users_id, dependent: :destroy
 end

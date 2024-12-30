@@ -1,10 +1,16 @@
+<%= turbo_frame_tag "modal" do %>
 <p style="color: green"><%= notice %></p>
-
-<%= render @task %>
-
-<div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
-
-  <%= button_to "Destroy this task", @task, method: :delete %>
+<div class='modal fade' tabindex=-1 data-controller='modal'>
+  <div class="modal-dialog " role="dialog" aria-modal="true" aria-hidden="false" id="<%= dom_id  @task %>">
+    <div class="modal-content">
+      <%= render @task %>
+      <div class='modal-footer'>
+        <%= link_to "Editar tarefa", edit_task_list_task_path(@task_list,@task), class:'btn btn-secondary', data: {turbo_frame:'_top'} %> |
+        <%= button_to "Remover tarefa", task_list_task_path, method: :delete, class: 'btn btn-danger',data: {'turbo-confirm': "Deseja mesmo remover essa tarefa?"}  %>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<% end %>

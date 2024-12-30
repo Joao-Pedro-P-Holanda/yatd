@@ -1,16 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Task lists" %>
+<% content_for :title, "Listas de tarefas" %>
 
-<h1>Task lists</h1>
+<h1 class='display-3'>Minhas listas de tarefas</h1>
 
-<div id="task_lists">
+<% if @task_lists.empty? %>
+  <p class='lead'>
+    Aqui você pode agrupar suas tarefas diárias em diferentes listas para 
+    facilitar sua organização.
+    <br/>
+    Vamos começar criando sua primeira lista de tarefas, clicando no botão abaixo.
+  </p>
+<% end %>
+
+<%= link_to "Adicionar lista de tarefas", new_task_list_path, class: 'btn btn-secondary' %>
+
+<div class="task-list gap-4 min-vh-100 d-flex flex-column">
   <% @task_lists.each do |task_list| %>
-    <%= render task_list %>
+    <div class='card card-task-list p-4 d-flex flex-row align-items-center'>
+    <%= render partial: "task_list_preview", locals: { task_list: task_list, action_name: 'Criar' } %>
     <p>
-      <%= link_to "Show this task list", task_list %>
+      <%= link_to "Ver detalhes", task_list, class: 'btn btn-info'%>
     </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New task list", new_task_list_path %>
