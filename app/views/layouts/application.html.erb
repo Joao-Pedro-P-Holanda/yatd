@@ -29,6 +29,7 @@
     <%= render "components/navbar"%>
     <main class='d-flex flex-column bd-content p-5 min-vh-100 gap-3 align-items-center' role="main">
     <%= yield %>
+    <%= turbo_frame_tag "modal"%>
     </main>
     <%= render "components/footer" %>
     <%= render "components/back_to_top" %>

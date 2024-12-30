@@ -1,11 +1,14 @@
 <% content_for :title, "New task list" %>
 
-<h1>New task list</h1>
+<div class='task-list d-flex flex-column container-lg'>
+<h1>Nova lista de tarefas</h1>
 
-<%= render "form", task_list: @task_list %>
+<%= render "form", task_list: @task_list, action_name: "Criar" %>
 
 <br>
 
 <div>
-  <%= link_to "Back to task lists", task_lists_path %>
+  <%= link_to "Voltar para minhas tarefas", task_lists_path %>
+</div>
+
 </div>

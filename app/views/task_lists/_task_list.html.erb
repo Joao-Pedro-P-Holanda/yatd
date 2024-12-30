@@ -1,12 +1,32 @@
-<div id="<%= dom_id task_list %>">
-  <p>
-    <strong>Name:</strong>
+<div class='container-lg gap-1 min-vh-100', id="<%= dom_id task_list %>">
+  <h1>
     <%= task_list.name %>
-  </p>
-
+  </h1>
+  <hr/>
   <p>
-    <strong>Description:</strong>
     <%= task_list.description %>
   </p>
+  <div class="nav-item flex-fill rounded-start ">
+    <a class="nav-link active text-center" aria-current="page" href="#board">Tabela</a>
+  </div>
+  </ul>
+  <div id="board" class='board d-flex flex-column align-items-center gap-3'>
+      <table>
+        <thead>
+         <% task_list.statuses.each do |status|%> 
+           <th class='d-flex flex-fill '>
+           <%= status.name %> 
+            <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid <%= status.color %>"/>
+           </th>
+         <% end %>
+        </thead>
+        <tbody>
+          <% task_list.tasks.each do |task| %>
+            <%= render "task_table_preview", task: task %> 
+          <% end %>
+        </tbody>
+      </table>
 
+      <%= link_to "adicionar tarefa", new_task_list_task_path(task_list_id: task_list.id), data: {turbo_frame:'modal' } %>
+  </div>
 </div>
