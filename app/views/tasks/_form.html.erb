@@ -12,28 +12,28 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name %>
+    <%= form.label "Nome" %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :description %>
+    <%= form.label "Descrição" %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
   <div class="form-group row">
-    <div class='col'>
+    <div class='col align-content-center'>
     <%= form.label "Prioridade" %>
     <%= form.select :priority, @priorities, class: "form-select", :prompt => "Prioridade" %>
     </div>
-    <div class='col'>
+    <div class='col align-content-center'>
       <%= form.label :status %>
       <%= form.select :status, @task_list.statuses.map {|status| status.name} , class: "form-select", :prompt => "Status" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= form.label :due_date %>
+    <%= form.label "Data limite" %>
     <%= form.datetime_field :due_date, class: "form-control" %>
   </div>
 

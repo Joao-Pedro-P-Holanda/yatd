@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to task_list_tasks_path(@task_list, @task), notice: "Task was successfully updated." }
+        format.html { redirect_to task_list_path(@task_list, @task), notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +60,13 @@ class TasksController < ApplicationController
     @task.destroy!
 
     respond_to do |format|
-      format.html { redirect_to tasks_path, status: :see_other, notice: "Task was successfully destroyed." }
+      format.html { redirect_to task_list_tasks_path, status: :see_other, notice: "Task was successfully destroyed." }
+      format.turbo_stream {
+          render turbo_stream: [
+            turbo_stream.remove("modal"),
+            turbo_stream.remove("task_#{@task.id}")
+          ]
+        }
       format.json { head :no_content }
     end
   end

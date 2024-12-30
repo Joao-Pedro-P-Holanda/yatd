@@ -1,12 +1,13 @@
-<% content_for :title, "Editing task" %>
+<% content_for :title, "Editar tarefa" %>
+<meta name="turbo-visit-control" content="reload">
 
-<h1>Editing task</h1>
 
-<%= render "form", task: @task %>
+<h1>Editar tarefa</h1>
+
+<%= render "form", task: @task, action_name: "Editar" %>
 
 <br>
 
 <div>
-  <%= link_to "Show this task", @task %> |
-  <%= link_to "Back to tasks", tasks_path %>
+  <%= link_to "Voltar para lista de tarefas", task_list_path(@task_list), class: 'btn btn-secondary' %>
 </div>

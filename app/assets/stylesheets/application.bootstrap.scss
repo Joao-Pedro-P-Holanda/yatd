@@ -6,7 +6,9 @@ $tertiary: #5f53a2;
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 @import './components/navbar.scss';
-@import'components/footer.scss';
+@import './components/footer.scss';
+@import './show_task_list.scss';
+@import './purchases.scss';
 
 
 
@@ -101,6 +103,16 @@ $tertiary: #5f53a2;
   :root {
     @include light-theme;
   }
+}
+
+
+.modal-content {
+  color: var(--color-on-surface);
+  background-color: var(--color-surface-container-high);
+}
+
+.modal-dialog {
+  max-width: 75% !important;
 }
 
 // overriding bootstrap style

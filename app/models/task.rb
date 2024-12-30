@@ -8,4 +8,15 @@ class Task < ApplicationRecord
   validates :priority, presence: true
   validates :due_date, presence: true
   validates :status, presence: true
+
+  def priority_name
+    case priority
+    when 1
+        "Alta"
+    when 2
+        "Média"
+    when 3
+        "Baixa"
+    end
+  end
 end

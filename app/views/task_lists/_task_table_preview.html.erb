@@ -1,6 +1,8 @@
-<div class='list-group-item'>
-          <td><%= task.name %></td>
+<%= link_to  task_list_task_path(task_list_id: task.task_lists_id, id: task.id), id: dom_id(task), data: {turbo_frame:'modal'}, class:'text-decoration-none w-100' do %>
+<div class='list-group-item w-100 rounded task-preview'>
+          <p><%= task.name %></p>
           <div class='badge text-bg-primary rounded-pill'>
             <%= format_date(task.due_date) %>
           </div>
 </div>
+<%end %>
