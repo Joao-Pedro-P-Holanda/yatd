@@ -65,3 +65,7 @@ end
 gem "cssbundling-rails", "~> 1.4"
 
 gem "devise", "~> 4.9"
+
+gem "link_thumbnailer", "~> 3.4"
+
+gem "validate_url", "~> 1.0"
