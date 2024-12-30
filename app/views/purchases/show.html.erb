@@ -1,10 +1,15 @@
+<div class='d-flex flex-column align-items-start container-lg min-vh-100 gap-5'>
 <p style="color: green"><%= notice %></p>
+
+<%= link_to "Voltar para todas as listas", purchases_path, class: 'btn btn-secondary' %>
 
 <%= render @purchase %>
 
-<div>
-  <%= link_to "Edit this purchase", edit_purchase_path(@purchase) %> |
-  <%= link_to "Back to purchases", purchases_path %>
+<%= link_to "Adicionar item", new_purchase_purchase_link_path(purchase_id: @purchase.id), class: 'btn btn-primary', data: {turbo_frame: 'modal'} %>
 
-  <%= button_to "Destroy this purchase", @purchase, method: :delete %>
+<div>
+  <%= link_to "Editar lista", edit_purchase_path(@purchase), class:'btn btn-primary' %> |
+
+  <%= button_to "Remover lista de compras", @purchase, method: :delete , data: {'turbo-confirm': 'Deseja mesmo remover a lista de compras'}, class: 'btn btn-danger' %>
+</div>
 </div>

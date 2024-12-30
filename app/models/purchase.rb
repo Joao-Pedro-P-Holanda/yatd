@@ -1,5 +1,5 @@
 class Purchase < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, foreign_key: :users_id
 
   has_many :purchase_links, foreign_key: :purchases_id, dependent: :destroy
 

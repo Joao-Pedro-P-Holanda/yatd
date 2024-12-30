@@ -1,16 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Purchases" %>
+<% content_for :title, "Compras" %>
 
-<h1>Purchases</h1>
+<h1 class='display-3'>
+  Minhas listas de compras
+</h1>
+  <%if @purchases.empty? %>
+  <p class='lead'>
+    Você pode criar listas de compras para organizar suas próximas compras online.
+    <br/>
+    Vamos começar adicionando uma nova lista de compras clicando no botão abaixo.
+  </p>
+<% end %>
+<%= link_to "Adicionar nova lista de compras", new_purchase_path, class: 'btn btn-primary' %>
 
-<div id="purchases">
+<div class="purchases">
+  
   <% @purchases.each do |purchase| %>
-    <%= render purchase %>
-    <p>
-      <%= link_to "Show this purchase", purchase %>
-    </p>
+    <%= render "purchase_card_preview", purchase: purchase %>
   <% end %>
 </div>
 
-<%= link_to "New purchase", new_purchase_path %>

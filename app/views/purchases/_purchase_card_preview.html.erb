@@ -1,0 +1,15 @@
+<div class='card purchase-preview'>
+  <div class='card-body d-flex flex-column gap-3 align-items-center'>
+    <h5 class='card-title'><%= purchase.name %></h5>
+    <% if purchase.purchase_links.empty? %>
+      <p class='card-text'>Nenhum link de compra encontrado</p>
+    <% else %>
+      <p class='card-text'><%= purchase.bought_count%>/<%=purchase.total_count%> Items comprados</p>
+      <p class='card-text'>R$<%= purchase.total_price %> Valor total</p>
+    <% end %>
+    <span class='badge rounded-pill text-bg-primary'><%= format_date(purchase.due_date) %></span>
+    <p>
+      <%= link_to "Ver detalhes", purchase, class: 'btn btn-info'%>
+    </p>
+    </div>
+</div>

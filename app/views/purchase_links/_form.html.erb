@@ -1,4 +1,4 @@
-<%= form_with(model: purchase_link) do |form| %>
+<%= form_with(model: [@purchase,@purchase_link], html: { class: 'form-group d-flex flex-column gap-3' }) do |form| %>
   <% if purchase_link.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(purchase_link.errors.count, "error") %> prohibited this purchase_link from being saved:</h2>
@@ -11,17 +11,16 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :complete, style: "display: block" %>
-    <%= form.checkbox :complete %>
-  </div>
-
-  <div>
+  <div class='form-group'>
     <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
+    <%= form.text_field :url ,class: 'form-control' %>
   </div>
 
+  <div class='form-group w-25'>
+    <%= form.label "Preço (R$)", style: "display: block" %>
+    <%= form.text_field :value,class: 'form-control' %>
+  </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit action_name ,class:'btn btn-primary' %>
   </div>
 <% end %>

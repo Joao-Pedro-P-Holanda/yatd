@@ -1,11 +1,17 @@
+<%= turbo_frame_tag "modal" do %>
 <% content_for :title, "New purchase link" %>
 
-<h1>New purchase link</h1>
-
-<%= render "form", purchase_link: @purchase_link %>
-
-<br>
-
-<div>
-  <%= link_to "Back to purchase links", purchase_links_path %>
+<div class='modal fade' id="add_purchase_link_modal" tabindex="-1" data-controller='modal'>
+  <div class="modal-dialog " role="dialog" aria-modal="true" aria-hidden="false">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Adicionar link para compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+        <%= render "form", purchase_link: @purchase_link, action_name: 'Criar' %>
+        </div>
+      </div>
+    </div>
 </div>
+<%end%>

@@ -1,12 +1,16 @@
-<% content_for :title, "Editing purchase link" %>
-
-<h1>Editing purchase link</h1>
-
-<%= render "form", purchase_link: @purchase_link %>
-
-<br>
-
-<div>
-  <%= link_to "Show this purchase link", @purchase_link %> |
-  <%= link_to "Back to purchase links", purchase_links_path %>
+<%= turbo_frame_tag "modal" do %>
+<% content_for :title, "Editar item de compra" %>
+<div class='modal fade' tabindex=-1 data-controller='modal'>
+  <div class="modal-dialog " role="dialog" aria-modal="true" aria-hidden="false" id="<%= dom_id  @purchase_link %>">
+    <div class="container modal-content p-3">
+      <div class='modal-header'>
+        <h1 class='modal-title'>Editando item da lista de compras</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <%= render "form", purchase_link: @purchase_link, action_name: 'Atualizar' %>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>
+<% end %>
