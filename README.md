@@ -117,3 +117,21 @@ erDiagram
     }
 ```
 
+## Capturas de tela
+
+Aqui estão algumas capturas de tela da aplicação:
+
+- **Criando tarefas**. Nessa funcionalidade eu criei os formulários e visualização de tarefas
+de forma não intrusiva com o uso do Turbo Rails, que consegue realizar atualizações em partes
+específicas da interface de acordo com as requisições.
+
+![Criando tarefas](./docs/modal-task-creation.jpeg)
+![Visualizando tarefas](./docs/modal-task-view.jpeg)
+![Quadro kanban](./docs/board-task.jpeg)
+
+- **Criando lista de compras**. Para isso inclui uma biblioteca que permite extrair as imagens e outras
+informações de social preview definidas com OpenGraph, isso permitiu que os links de compra
+tivessem suas informações preenchidas dinamicamente com base apenas nas informações já existentes na página.
+
+![Lista de compras início](./docs/purchase-list-1.jpeg)
+![Lista de compras final](./docs/purchase-list-2.jpeg)
